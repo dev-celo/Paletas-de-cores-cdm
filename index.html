@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CDM Sistema de Design — Paleta Corporativa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #6a0200;
+            --brand-rgb: 106, 2, 0;
+            --brand-dark: #4a0100;
+            --brand-light: #8a0300;
+            
+            --gray-100: #f8fafc;
+            --gray-200: #eef2f6;
+            --gray-300: #e2e8f0;
+            --gray-400: #cbd5e1;
+            --gray-500: #94a3b8;
+            --gray-600: #64748b;
+            --gray-700: #475569;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            --surface: #ffffff;
+            --surface-muted: #f8fafc;
+            --border: #eef2f6;
+            --text: #0f172a;
+            --text-muted: #475569;
+            
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -2px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.08), 0 10px 10px -5px rgba(0,0,0,0.02);
+            --shadow-xl: 0 25px 50px -12px rgba(0,0,0,0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.dark {
+            --surface: #0f172a;
+            --surface-muted: #1e293b;
+            --border: #334155;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --gray-100: #1e293b;
+            --gray-200: #334155;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--surface-muted);
+            color: var(--text);
+            line-height: 1.5;
+            transition: background var(--transition-base), color var(--transition-base);
+        }
+
+        img {
+            width: 40rem;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            border-radius: var(--radius-xl) var(--radius-xl);
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="rgba(255,255,255,0.05)" d="M45 30L55 20L65 30L55 40Z"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .logo-wrapper {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .brand h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .brand p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        .theme-btn {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .theme-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.02);
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title span {
+            background: var(--brand);
+            width: 8px;
+            height: 32px;
+            border-radius: 4px;
+        }
+
+        /* Grid de cores */
+        .colors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .color-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+            cursor: pointer;
+            border: 1px solid var(--border);
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .color-preview {
+            height: 140px;
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .color-preview::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .contrast-badge {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: white;
+            z-index: 2;
+        }
+
+        .color-info {
+            padding: 1.25rem;
+        }
+
+        .color-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .color-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .color-description {
+            font-size: 0.8rem;
+            background: var(--surface-muted);
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            margin: 0.75rem 0;
+            border-left: 3px solid var(--brand);
+            line-height: 1.4;
+        }
+
+        .excel-tip {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            background: rgba(106, 2, 0, 0.1);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            margin-top: 0.5rem;
+            font-family: monospace;
+        }
+
+        .color-values-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .color-chip {
+            background: var(--surface-muted);
+            padding: 0.3rem 0.7rem;
+            border-radius: var(--radius-sm);
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .color-chip:hover {
+            background: var(--brand);
+            color: white;
+            transform: scale(0.95);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border-radius: var(--radius-xl);
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .brightness-slider {
+            margin: 1.5rem 0;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: var(--gray-300);
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--brand);
+            cursor: pointer;
+        }
+
+        .export-btn {
+            background: var(--brand);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* Gradients section */
+        .gradients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .gradient-card {
+            height: 120px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-card:hover {
+            transform: scale(0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .gradient-card span {
+            background: rgba(0,0,0,0.5);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 400;
+        }
+
+        .usage-guide {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .usage-guide h3 {
+            margin-bottom: 1rem;
+            color: var(--brand);
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .usage-item {
+            padding: 0.75rem;
+            background: var(--surface-muted);
+            border-radius: var(--radius-md);
+        }
+
+        .usage-item strong {
+            color: var(--brand);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .hero {
+                padding: 2rem 1rem;
+            }
+            .colors-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gray-800);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            z-index: 1100;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo-area">
+                    <div class="logo-wrapper" id="logoPlaceholder">
+                        CDM
+                    </div>
+                    <div class="brand">
+                        <h1>CDM Sistema de Design</h1>
+                        <p>Paleta de Cores Corporativa — Guia de Uso Oficial</p>
+                    </div>
+                </div>
+                <button class="theme-btn" id="themeToggle">🌙 Modo escuro</button>
+            </div>
+            <div class="stats-bar">
+                <div>🎨 11 cores oficiais</div>
+                <div>📋 Clique nos códigos para copiar</div>
+                <div>✨ 6 gradientes sugeridos</div>
+                <div>📊 Compatível com Excel/PowerPoint</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Guia rápido de uso -->
+        <div class="usage-guide">
+            <h3>📖 Guia rápido: como usar cada cor</h3>
+            <div class="usage-grid">
+                <div class="usage-item">
+                    <strong>🔴 Vermelho Institucional (#6a0200)</strong>
+                    usar em: cabeçalhos, barras de navegação, botões principais, bordas de destaque, logo
+                    <div class="excel-tip">📊 Excel: use esta cor em títulos de relatórios e células de total</div>
+                </div>
+                <div class="usage-item">
+                    <strong>⚪ Cinza Camisa Escritório (#b7b5b6)</strong>
+                    usar em: fundos de cards, campos desabilitados, linhas de separação
+                    <div class="excel-tip">📊 Excel: células neutras ou campos não editáveis</div>
+                </div>
+                <div class="usage-item">
+                    <strong>⬜ Off-white Quente (#F5ECD7)</strong>
+                    usar em: fundo principal de páginas, áreas de leitura, relatórios
+                    <div class="excel-tip">📊 Excel: fundo padrão de planilhas para reduzir fadiga visual</div>
+                </div>
+                <div class="usage-item">
+                    <strong>⬛ Cinza Carbonizado (#2C2C2C)</strong>
+                    usar em: textos principais, cabeçalhos de tabela, rodapés
+                    <div class="excel-tip">📊 Excel: cor padrão para textos e cabeçalhos de coluna</div>
+                </div>
+                <div class="usage-item">
+                    <strong>🟢 Verde Camisa Operacional (#434a2b)</strong>
+                    usar em: fundos secundários, áreas de leitura prolongada, uniforme digital
+                    <div class="excel-tip">📊 Excel: indicadores de "Em andamento" ou células de status médio</div>
+                </div>
+                <div class="usage-item">
+                    <strong>🟡 Dourado Nobre (#F5A623)</strong>
+                    usar em: botões CTA (Chamada para Ação), selos de desconto, conquistas, destaques
+                    <div class="excel-tip">📊 Excel: destaque de metas atingidas ou células de sucesso</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="example.png" alt="Exemplo de Planilha com paleta de cores" srcset=""">
+        </div>
+
+        <div class="section-title">
+            <span></span>
+            <h2>🎨 Paleta de Cores Oficial</h2>
+        </div>
+        <div class="colors-grid" id="colorsGrid"></div>
+
+        <div class="section-title">
+            <span></span>
+            <h2>✨ Gradientes Sugeridos (clique para copiar)</h2>
+        </div>
+        <div class="gradients-grid" id="gradientsGrid"></div>
+    </div>
+
+    <footer>
+        CDM Corporativo • Clique em qualquer cor para ver detalhes avançados e variações de luminosidade
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="colorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detalhes da Cor</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalPreview" style="height: 100px; border-radius: 12px; margin-bottom: 1.5rem;"></div>
+                <div id="modalDescription" style="margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.4;"></div>
+                <div class="color-values-row" id="modalValues"></div>
+                
+                <div class="brightness-slider">
+                    <label style="font-size: 0.85rem; font-weight: 500;">💡 Variação de luminosidade (para criar tons derivados)</label>
+                    <input type="range" id="brightnessSlider" min="0" max="100" value="50">
+                    <div id="variationPreview" style="height: 60px; border-radius: 8px; margin-top: 0.5rem;"></div>
+                    <div class="excel-tip" style="margin-top: 0.5rem;">💡 Dica: use esta variação para criar efeitos de hover ou degradês no Excel/PPT</div>
+                </div>
+                
+                <button class="export-btn" id="exportCSSBtn">📋 Exportar todas as cores como CSS Variables</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Paleta expandida COM DESCRIÇÕES DETALHADAS
+        const colors = [
+            { 
+                name: "Vermelho Institucional", 
+                role: "Principal • Logo", 
+                hex: "#6a0200", 
+                category: "primary",
+                description: "⭐ COR PRINCIPAL DA MARCA - Use em: barras de navegação, títulos principais, botões primários, hover de links, bordas de elementos importantes, rodapés. Evite usar como fundo de texto longo. Contraste recomendado: texto branco.",
+                excelTip: "Células de total, cabeçalhos de relatório, formatação condicional para valores críticos"
+            },
+            { 
+                name: "Cinza Camisa Escritório", 
+                role: "Uniforme Escritório", 
+                hex: "#b7b5b6", 
+                category: "neutral",
+                description: "⚙️ NEUTRO PRINCIPAL - Use em: fundos de seções, campos desabilitados, separadores, linhas de grade, ícones secundários. NUNCA use para textos.",
+                excelTip: "Células bloqueadas, áreas cinzas de gráficos, fundo de células com fórmula"
+            },
+            { 
+                name: "Verde Camisa Operacional", 
+                role: "Uniforme Operacional", 
+                hex: "#434a2b", 
+                category: "secondary",
+                description: "🌿 COR OPERACIONAL - Use em: fundos de cards secundários, badges de status 'em andamento', elementos de navegação secundária, destaques sutis. Combina bem com Off-white como fundo.",
+                excelTip: "Status de processos em andamento, células de valores intermediários"
+            },
+            { 
+                name: "Off-white Quente", 
+                role: "Fundos", 
+                hex: "#F5ECD7", 
+                category: "neutral",
+                description: "📄 FUNDO PRINCIPAL - Use como: cor de fundo padrão de páginas, relatórios, cards, áreas de leitura prolongada. REDUZ fadiga visual comparado ao branco puro.",
+                excelTip: "Fundo padrão de planilhas (substitua o branco puro), áreas de entrada de dados"
+            },
+            { 
+                name: "Cinza Carbonizado", 
+                role: "Textos", 
+                hex: "#2C2C2C", 
+                category: "text",
+                description: "📝 TEXTOS PRINCIPAIS - Use em: textos corridos, cabeçalhos de tabela, legendas, labels de formulário. É o padrão para todo texto escuro com fundo claro.",
+                excelTip: "Texto padrão de células, cabeçalhos de coluna, anotações"
+            },
+            { 
+                name: "Azul Petróleo", 
+                role: "Links • Hover", 
+                hex: "#2C4C5C", 
+                category: "complementary",
+                description: "🔗 LINKS E INTERAÇÃO - Use em: links clicáveis, hover de botões secundários, ícones interativos, breadcrumbs. Dá sensação de confiança.",
+                excelTip: "Hyperlinks em células, indicadores de navegação entre abas"
+            },
+            { 
+                name: "Dourado Nobre", 
+                role: "CTA • Botões", 
+                hex: "#F5A623", 
+                category: "complementary",
+                description: "🏆 DESTAQUE MÁXIMO - Use em: botões de ação principal (CTA), selos de desconto, conquistas/premiações, elementos que precisam chamar atenção imediata. Use com moderação!",
+                excelTip: "Destaque de metas ousadas, células de premiação, KPIs principais"
+            },
+            { 
+                name: "Verde Musgo", 
+                role: "Aprovações • Sucesso", 
+                hex: "#4A5D23", 
+                category: "complementary",
+                description: "✅ APROVAÇÃO E SUCESSO - Use em: botões de confirmar, mensagens de sucesso, checkmarks, indicadores de tarefa concluída, selos de 'aprovado'.",
+                excelTip: "Formatação condicional para metas atingidas, células verdes de OK"
+            },
+            { 
+                name: "Laranja Detalhe", 
+                role: "Detalhe Escritório", 
+                hex: "#ff5f1f", 
+                category: "accent",
+                description: "⚠️ ATENÇÃO E ALERTA - Use em: mensagens de erro, campos obrigatórios, alertas, botões de deletar, ícones de aviso. Transmite urgência.",
+                excelTip: "Alertas de células com erro, formatação condicional para valores fora do padrão"
+            },
+            { 
+                name: "Bege Areia", 
+                role: "Sidebar", 
+                hex: "#D4C4A8", 
+                category: "neutral",
+                description: "🏜️ FUNDO SECUNDÁRIO - Use em: sidebars, menus laterais, áreas de filtro, cabeçalhos de seção. Cria hierarquia visual sem competir com o conteúdo.",
+                excelTip: "Áreas de menu em dashboards, painéis laterais de controle"
+            },
+            { 
+                name: "Verde Detalhe Operacional", 
+                role: "Detalhe Operacional", 
+                hex: "#8BC34A", 
+                category: "accent",
+                description: "🌱 DESTAQUE POSITIVO - Use em: ícones de positivo, indicadores de status 'bom', elementos decorativos, realces suaves. Versão mais vibrante do verde operacional.",
+                excelTip: "Indicadores de tendência positiva, setas verdes de crescimento"
+            }
+        ];
+
+        function hexToRgb(hex) {
+            const h = hex.replace('#', '');
+            const r = parseInt(h.substring(0,2), 16);
+            const g = parseInt(h.substring(2,4), 16);
+            const b = parseInt(h.substring(4,6), 16);
+            return `${r}, ${g}, ${b}`;
+        }
+
+        function hexToHsl(hex) {
+            let r,g,b;
+            const hx = hex.replace('#', '');
+            r = parseInt(hx.substring(0,2),16)/255;
+            g = parseInt(hx.substring(2,4),16)/255;
+            b = parseInt(hx.substring(4,6),16)/255;
+            const max = Math.max(r,g,b), min = Math.min(r,g,b);
+            let h,s,l = (max+min)/2;
+            if(max===min) h=s=0;
+            else {
+                const d = max-min;
+                s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+                switch(max){
+                    case r: h = (g-b)/d + (g<b ? 6 : 0); break;
+                    case g: h = (b-r)/d + 2; break;
+                    case b: h = (r-g)/d + 4; break;
+                }
+                h *= 60;
+            }
+            return `${Math.round(h)}°, ${Math.round(s*100)}%, ${Math.round(l*100)}%`;
+        }
+
+        function getContrastText(hex) {
+            const rgb = hex.replace('#', '');
+            const r = parseInt(rgb.substring(0,2),16);
+            const g = parseInt(rgb.substring(2,4),16);
+            const b = parseInt(rgb.substring(4,6),16);
+            const brightness = (r*299 + g*587 + b*114)/1000;
+            return brightness > 128 ? '#000000' : '#ffffff';
+        }
+
+        let currentColor = null;
+
+        function renderColors() {
+            const grid = document.getElementById('colorsGrid');
+            grid.innerHTML = colors.map(color => `
+                <div class="color-card" data-color='${JSON.stringify(color)}'>
+                    <div class="color-preview" style="background: ${color.hex};">
+                        <div class="contrast-badge">${getContrastText(color.hex) === '#ffffff' ? 'Texto claro ✓' : 'Texto escuro ✓'}</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">${color.name}</div>
+                        <div class="color-role">${color.role}</div>
+                        <div class="color-description">${color.description.substring(0, 120)}...</div>
+                        <div class="color-values-row">
+                            <span class="color-chip">${color.hex}</span>
+                            <span class="color-chip">rgb(${hexToRgb(color.hex)})</span>
+                        </div>
+                        <div class="excel-tip">📊 Excel/PPT: ${color.excelTip}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.color-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if(!e.target.classList.contains('color-chip')) {
+                        const colorData = JSON.parse(card.getAttribute('data-color'));
+                        openModal(colorData);
+                    }
+                });
+                
+                const chips = card.querySelectorAll('.color-chip');
+                chips.forEach(chip => {
+                    chip.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const text = chip.innerText;
+                        navigator.clipboard.writeText(text);
+                        showToast(`Copiado: ${text}`);
+                    });
+                });
+            });
+        }
+
+        function renderGradients() {
+            // Gradientes baseados nas cores reais da paleta
+            const gradients = [
+                { name: "Vermelho → Dourado", colors: ["#6a0200", "#F5A623"], angle: "135deg" },
+                { name: "Azul Petróleo → Vermelho", colors: ["#2C4C5C", "#6a0200"], angle: "145deg" },
+                { name: "Verde Musgo → Dourado", colors: ["#4A5D23", "#F5A623"], angle: "120deg" },
+                { name: "Cinza Carbonizado → Cinza Escritório", colors: ["#2C2C2C", "#b7b5b6"], angle: "90deg" },
+                { name: "Off-white → Bege Areia", colors: ["#F5ECD7", "#D4C4A8"], angle: "180deg" },
+                { name: "Vermelho → Laranja", colors: ["#6a0200", "#ff5f1f"], angle: "160deg" }
+            ];
+            
+            const grid = document.getElementById('gradientsGrid');
+            grid.innerHTML = gradients.map(g => `
+                <div class="gradient-card" style="background: linear-gradient(${g.angle}, ${g.colors[0]}, ${g.colors[1]});"
+                     data-gradient="linear-gradient(${g.angle}, ${g.colors[0]}, ${g.colors[1]})">
+                    <span>${g.name}</span>
+                </div>
+            `).join('');
+            
+            document.querySelectorAll('.gradient-card').forEach(g => {
+                g.addEventListener('click', () => {
+                    const gradStyle = g.getAttribute('data-gradient');
+                    navigator.clipboard.writeText(gradStyle);
+                    showToast(`Gradiente copiado: ${gradStyle}`);
+                });
+            });
+        }
+
+        function openModal(color) {
+            currentColor = color;
+            const modal = document.getElementById('colorModal');
+            document.getElementById('modalTitle').innerText = color.name;
+            document.getElementById('modalPreview').style.background = color.hex;
+            document.getElementById('modalDescription').innerHTML = `
+                <strong>📌 Como usar:</strong> ${color.description}<br>
+                <strong>📊 No Excel/PPT:</strong> ${color.excelTip}
+            `;
+            
+            const modalValues = document.getElementById('modalValues');
+            modalValues.innerHTML = `
+                <span class="color-chip">HEX: ${color.hex}</span>
+                <span class="color-chip">RGB: ${hexToRgb(color.hex)}</span>
+                <span class="color-chip">HSL: ${hexToHsl(color.hex)}</span>
+            `;
+            
+            // Adicionar evento de cópia nos chips do modal
+            document.querySelectorAll('#modalValues .color-chip').forEach(chip => {
+                chip.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const text = chip.innerText.split(': ')[1] || chip.innerText;
+                    navigator.clipboard.writeText(text);
+                    showToast(`Copiado: ${text}`);
+                });
+            });
+            
+            document.getElementById('variationPreview').style.background = color.hex;
+            modal.classList.add('active');
+            
+            const slider = document.getElementById('brightnessSlider');
+            slider.oninput = (e) => {
+                const val = e.target.value;
+                const darkened = adjustBrightness(color.hex, (val - 50) / 50);
+                document.getElementById('variationPreview').style.background = darkened;
+            };
+        }
+
+        function adjustBrightness(hex, percent) {
+            const rgb = hex.replace('#', '');
+            let r = parseInt(rgb.substring(0,2),16);
+            let g = parseInt(rgb.substring(2,4),16);
+            let b = parseInt(rgb.substring(4,6),16);
+            const factor = 1 + percent;
+            r = Math.min(255, Math.max(0, r * factor));
+            g = Math.min(255, Math.max(0, g * factor));
+            b = Math.min(255, Math.max(0, b * factor));
+            return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+        }
+
+        function exportCSS() {
+            let css = `:root {\n`;
+            colors.forEach(c => {
+                const varName = `--color-${c.name.toLowerCase().replace(/ /g, '-')}`;
+                css += `  ${varName}: ${c.hex};\n`;
+            });
+            css += `  --brand-primary: #6a0200;\n`;
+            css += `  --brand-secondary: #434a2b;\n`;
+            css += `  --brand-accent: #F5A623;\n`;
+            css += `}\n\n`;
+            css += `/* Classes de uso rápido */\n`;
+            css += `.bg-primary { background: var(--brand-primary); color: white; }\n`;
+            css += `.bg-secondary { background: var(--brand-secondary); color: white; }\n`;
+            css += `.bg-accent { background: var(--brand-accent); color: #2C2C2C; }\n`;
+            css += `.text-primary { color: var(--brand-primary); }\n`;
+            css += `.text-secondary { color: var(--brand-secondary); }\n`;
+            css += `.text-accent { color: var(--brand-accent); }\n`;
+            navigator.clipboard.writeText(css);
+            showToast('✅ CSS Variables e classes utilitárias copiadas!');
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+
+        // Theme toggle
+        function initTheme() {
+            const isDark = localStorage.getItem('cdm_theme') === 'dark';
+            if (isDark) {
+                document.body.classList.add('dark');
+                document.getElementById('themeToggle').innerHTML = '☀️ Modo claro';
+            } else {
+                document.getElementById('themeToggle').innerHTML = '🌙 Modo escuro';
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            localStorage.setItem('cdm_theme', isDark ? 'dark' : 'light');
+            document.getElementById('themeToggle').innerHTML = isDark ? '☀️ Modo claro' : '🌙 Modo escuro';
+        });
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('colorModal').classList.remove('active');
+        });
+        
+        document.getElementById('exportCSSBtn').addEventListener('click', exportCSS);
+        
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('colorModal');
+            if(e.target === modal) modal.classList.remove('active');
+        });
+
+        // Inicialização
+        renderColors();
+        renderGradients();
+        initTheme();
+    </script>
+</body>
+</html>
